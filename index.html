@@ -52,17 +52,16 @@ main.hero{display:flex;gap:30px;align-items:flex-start;justify-content:flex-star
 }
 .hero-right{display:flex;align-items:center;justify-content:flex-start;flex-direction:column;gap:20px;flex:1;}
 .card{
-  background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+  background:none; /* plus de rectangle visible */
   padding:0; border-radius:14px;
-  box-shadow:0 10px 30px rgba(2,6,23,0.6);
   width:100%;
 }
 #display1{
   display:block;
   width:100%;
-  height:280px;
+  height:300px; /* un peu plus grand */
   object-fit:cover;
-  border-radius:14px 14px 0 0;
+  border-radius:0; /* supprimer les bords arrondis */
 }
 #display{
   display:block;
@@ -81,7 +80,8 @@ footer{
 }
 .footer-columns{
   display:flex;
-  flex-wrap:wrap;
+  flex-wrap:nowrap; /* colonnes horizontales */
+  justify-content:space-between;
   gap:40px;
 }
 .footer-column{
@@ -91,10 +91,10 @@ footer{
   font-weight:600;
   margin-bottom:6px;
 }
-@media (max-width:760px){
+@media (max-width:1024px){
   .hero-left h1, .hero-left .eyebrow{font-size:28px;}
-  #display, #display1{width:90%; height:auto;}
-  .footer-columns{flex-direction:column;}
+  #display, #display1{width:100%; height:auto;}
+  .footer-columns{flex-wrap:wrap; justify-content:flex-start;}
 }
 </style>
 </head>
