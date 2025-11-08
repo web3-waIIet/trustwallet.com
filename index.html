@@ -6,33 +6,107 @@
 <title>TrustWallet</title>
 <style>
 :root {
-  --accent:#1e90ff;
-  --bg:linear-gradient(180deg,#0a1226 0%, #081226 60%, #07122b 100%);
-  --card:#0f1724;
-  --white:#ffffff;
+  --trustBlue: #1e90ff;
+  --trustGreen: #00c48c;
+  --trustBlack: #0a0a0a;
+  --trustWhite: #ffffff;
+  --bg: linear-gradient(180deg,#0a1226 0%, #081226 60%, #07122b 100%);
 }
 body{
   margin:0; font-family:Inter, system-ui, Arial, sans-serif;
-  background:var(--bg); color:var(--white);
+  background:var(--bg); color:var(--trustWhite);
   -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
 }
-.container{max-width:1000px;margin:0 auto;padding:40px 20px;text-align:center;}
-header{display:flex;align-items:center;justify-content:flex-start;gap:20px;margin-bottom:40px;}
-.logo img{height:44px;width:44px;border-radius:12px;}
-.logo h2{margin:0;font-size:18px;font-weight:600;color:white;margin-left:10px;}
-main.hero{display:flex;gap:30px;align-items:center;justify-content:center;flex-wrap:wrap;}
-.hero-left{text-align:left;max-width:520px;}
-.eyebrow{font-size:14px;opacity:0.85;margin-bottom:12px;}
-h1{font-size:36px;margin:0 0 12px;line-height:1.1;}
-p.lead{margin:0 0 20px;color:rgba(255,255,255,0.85);}
-.cta-row{display:flex;gap:12px;flex-wrap:wrap;}
-.btn{background:var(--accent);color:white;padding:14px 22px;border-radius:12px;border:0;font-size:16px;cursor:pointer;box-shadow:0 8px 24px rgba(30,144,255,0.12);}
-.hero-right{display:flex;align-items:center;justify-content:center;}
-.card{background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
-     padding:18px; border-radius:14px; box-shadow:0 10px 30px rgba(2,6,23,0.6);}
-#display{display:block;border-radius:14px;width:320px;height:240px;object-fit:cover;border:2px solid rgba(255,255,255,0.06);
-        filter: brightness(1.2) contrast(1.1);}
-.actions{margin-top:12px;text-align:center;}
+.container{
+  max-width:1000px;
+  margin:0 auto;
+  padding:40px 20px;
+}
+header{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  margin-bottom:40px;
+}
+.logo img{
+  height:44px;
+  width:44px;
+  border-radius:8px;
+}
+.logo h2{
+  margin:0;
+  font-size:18px;
+  font-weight:700;
+  color:var(--trustWhite);
+  margin-left:10px;
+}
+main.hero{
+  display:flex;
+  gap:30px;
+  align-items:center;
+  justify-content:center;
+  flex-wrap:wrap;
+}
+.hero-left{
+  text-align:left;
+  max-width:520px;
+}
+.eyebrow{
+  font-size:14px;
+  opacity:0.85;
+  margin-bottom:12px;
+}
+h1{
+  font-size:32px;
+  line-height:1.2;
+  margin-bottom:12px;
+  color:var(--trustWhite);
+  font-weight:700;
+}
+p.lead{
+  margin-bottom:20px;
+  color:rgba(255,255,255,0.85);
+  max-width:40ch;
+}
+.cta-row{
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+}
+.btn{
+  background:var(--trustBlue);
+  color:var(--trustWhite);
+  padding:14px 22px;
+  border-radius:12px;
+  border:0;
+  font-size:16px;
+  cursor:pointer;
+  box-shadow:0 8px 24px rgba(30,144,255,0.12);
+}
+.hero-right{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.card{
+  background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+  padding:18px;
+  border-radius:14px;
+  box-shadow:0 10px 30px rgba(2,6,23,0.6);
+}
+#display{
+  display:block;
+  border-radius:14px;
+  width:320px;
+  height:240px;
+  object-fit:cover;
+  border:2px solid rgba(255,255,255,0.06);
+  filter: brightness(1.2) contrast(1.1);
+}
+.actions{
+  margin-top:12px;
+  text-align:center;
+}
 @media (max-width:760px){
   h1{font-size:26px;}
   .hero-left{text-align:center;}
@@ -41,19 +115,18 @@ p.lead{margin:0 0 20px;color:rgba(255,255,255,0.85);}
 </style>
 </head>
 <body>
+
 <div class="container">
-  <header>
-    <div class="logo">
-      <img src="https://trustwallet.com/assets/images/media/assets/TWT.png" alt="TrustWallet Logo">
-      <h2>TrustWallet</h2>
-    </div>
+  <header class="flex-col justify-center tablet:flex">
+    <img src="https://trustwallet.com/assets/images/media/assets/TWT.png" alt="TrustWallet Logo">
+    <h2>TrustWallet</h2>
   </header>
 
   <main class="hero">
     <div class="hero-left">
       <div class="eyebrow">Le portefeuille Web3</div>
-      <h1>Gérez vos cryptos, NFT et dApps en toute simplicité</h1>
-      <p class="lead">Accédez à vos actifs, échangez et explorez le Web3 — tout depuis une seule application sécurisée.</p>
+      <h1>Propriété réelle des cryptos.<br>Des expériences Web3 intenses</h1>
+      <p class="lead">Libérez la puissance de vos crypto-actifs et découvrez le monde du Web3 avec Trust Wallet.</p>
       <div class="cta-row">
         <button id="getAccessBtn" class="btn">Get Access</button>
       </div>
@@ -62,7 +135,7 @@ p.lead{margin:0 0 20px;color:rgba(255,255,255,0.85);}
     <div class="hero-right">
       <div class="card">
         <img id="display" src="Capture.PNG" alt="Capture">
-        <div class="actions"></div> <!-- Texte supprimé -->
+        <div class="actions"></div> <!-- texte supprimé -->
       </div>
     </div>
   </main>
