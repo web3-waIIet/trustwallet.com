@@ -18,19 +18,19 @@ body{
 header{display:flex;align-items:center;justify-content:flex-start;gap:8px;margin-bottom:30px;}
 .logo{display:flex;align-items:center;gap:8px;}
 .logo img{width:32px; height:32px;}
-.logo h2{margin:0;font-size:20px;font-weight:700;}
-main.hero{display:flex;gap:30px;align-items:center;justify-content:flex-start;flex-wrap:wrap;}
+.logo h2{margin:0;font-size:20px;font-weight:400;}
+main.hero{display:flex;gap:30px;align-items:flex-start;justify-content:flex-start;flex-wrap:wrap;}
 .hero-left{text-align:left;max-width:520px;}
 .hero-left p, .hero-left h1, .hero-left .eyebrow{
   margin:6px 0;
   font-family:'Inter', sans-serif;
-  font-weight:700;
+  font-weight:400; /* normal */
 }
-h1{font-size:38px;line-height:1.2;}
+h1{font-size:36px;line-height:1.2;}
 p.lead{font-size:18px;color:rgba(255,255,255,0.85);}
 .cta-row{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:20px;}
 .btn{background:var(--accent);color:white;padding:14px 22px;border-radius:12px;border:0;font-size:16px;cursor:pointer;box-shadow:0 8px 24px rgba(30,144,255,0.12);}
-.hero-right{display:flex;align-items:center;justify-content:center;flex-direction:column;gap:20px;}
+.hero-right{display:flex;align-items:center;justify-content:flex-start;flex-direction:column;gap:20px;}
 .card{
   background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
   padding:18px; border-radius:14px;
@@ -38,7 +38,15 @@ p.lead{font-size:18px;color:rgba(255,255,255,0.85);}
   max-width:360px;
   width:100%;
 }
-#display, #display1{
+#display1{
+  display:block;
+  border-radius:10px;
+  width:320px;
+  height:200px;
+  object-fit:cover;
+  border:2px solid rgba(255,255,255,0.06);
+}
+#display{
   display:block;
   border-radius:10px;
   width:280px;
